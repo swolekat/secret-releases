@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>Secret Releases</title>
+    <meta name="robots" content="noindex, nofollow"/>
+    <meta name="theme-color" content="#0a0907"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Space+Mono:wght@400;700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap"
+            rel="stylesheet"
+    />
+    <style>
+        :root {
+            --ink: #0a0907;
+            --surface: #16120b;
+            --well: #0c0b08;
+            --paper: #f3ede0;
+            --paper-dim: #d6cdb6;
+            --ink-soft: #b0a78f;
+            --red: #ff2b46;
+            --red-deep: #b3132c;
+            --acid: #f5d020;
+            --font-display: "Bricolage Grotesque", system-ui, sans-serif;
+            --font-body: "Hanken Grotesk", system-ui, sans-serif;
+            --font-mono: "Space Mono", ui-monospace, monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: var(--ink);
+            color: var(--paper);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        ::selection {
+            background: var(--red);
+            color: #fff;
+        }
+
+        /* CRT scanline overlay */
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: 9000;
+            pointer-events: none;
+            background: repeating-linear-gradient(
+                    to bottom,
+                    rgba(0, 0, 0, 0.16) 0 1px,
+                    transparent 1px 3px
+            );
+            mix-blend-mode: multiply;
+        }
+
+        .wrap {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 64px 24px 96px;
+        }
+
+        .eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--font-mono);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--acid);
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 10px;
+            height: 10px;
+            background: var(--acid);
+            flex: none;
+        }
+
+        h1 {
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-stretch: 80%;
+            text-transform: uppercase;
+            font-size: clamp(3rem, 9vw, 5.5rem);
+            line-height: 0.95;
+            letter-spacing: -0.01em;
+            margin: 16px 0 0;
+        }
+
+        h1 .bang {
+            color: var(--red);
+        }
+
+        .lede {
+            margin: 28px 0 0;
+            padding-left: 20px;
+            border-left: 4px solid var(--red);
+            color: var(--paper-dim);
+            font-size: 18px;
+            line-height: 1.6;
+            max-width: 62ch;
+        }
+
+        .rule {
+            margin: 56px 0 40px;
+            border: none;
+            border-top: 3px solid var(--paper);
+        }
+
+        .card {
+            border: 3px solid var(--paper);
+            background: var(--surface);
+            box-shadow: 8px 8px 0 var(--red-deep);
+            padding: 28px 28px 32px;
+            margin: 0 0 40px;
+        }
+
+        .card-head {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        h2 {
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-stretch: 80%;
+            text-transform: uppercase;
+            font-size: clamp(1.6rem, 4vw, 2.4rem);
+            line-height: 1;
+            margin: 0;
+        }
+
+        .ver {
+            font-family: var(--font-mono);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            color: var(--ink);
+            background: var(--acid);
+            padding: 4px 10px;
+            flex: none;
+        }
+
+        .downloads {
+            margin-top: 24px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .dl {
+            display: inline-flex;
+            flex-direction: column;
+            gap: 4px;
+            text-decoration: none;
+            border: 3px solid var(--paper);
+            background: var(--well);
+            color: var(--paper);
+            padding: 14px 20px;
+            min-width: 240px;
+            transition: background 300ms ease,
+            color 300ms ease,
+            border-color 300ms ease,
+            transform 300ms ease;
+        }
+
+        .dl:hover,
+        .dl:focus-visible {
+            background: var(--red);
+            border-color: var(--red);
+            color: #fff;
+            transform: translate(-2px, -2px);
+            outline: none;
+        }
+
+        .dl-label {
+            font-family: var(--font-display);
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 18px;
+            letter-spacing: 0.02em;
+        }
+
+        .dl-label .arrow {
+            color: var(--acid);
+        }
+
+        .dl-meta {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--ink-soft);
+            transition: color 300ms ease;
+        }
+
+        .dl:hover .dl-meta,
+        .dl:focus-visible .dl-meta {
+            color: #ffd7dd;
+        }
+
+        footer {
+            margin-top: 24px;
+            font-family: var(--font-mono);
+            font-size: 12px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--ink-soft);
+        }
+
+        footer a {
+            color: var(--acid);
+            text-decoration: none;
+            transition: color 300ms ease;
+        }
+
+        footer a:hover {
+            color: var(--red);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                transition-duration: 0.001ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+<main class="wrap">
+    <header>
+        <p class="eyebrow">Off the record &middot; Unlisted</p>
+        <h1>Secret Releases<span class="bang">.</span></h1>
+        <p class="lede">
+            I'm not trying to rock the boat with anyone but I have been using AI coding tools
+            to make a couple of tiny apps that are useful for me. I figure they might also be useful
+            to others. So here they are. Please do with them what you will.
+        </p>
+        <p>
+            Please be warned that these are unsigned and your OS will probably warn you when you try to install them.
+        </p>
+    </header>
+
+    <hr class="rule"/>
+
+    <section class="card">
+        <div class="card-head">
+            <h2>Twitch Tinder</h2>
+            <span class="ver">v1.4.0</span>
+        </div>
+        <p>
+            Twitch discovery is not great. This app will take your following list and give you a tinder style feed of
+            streamers that you can like (and hopefuly follow) or not like and it won't show you again.
+        </p>
+        <div class="downloads">
+            <a class="dl" href="https://github.com/swolekat/secret-releases/releases/download/downloads/Twitch.Tinder.Setup.1.4.0.exe" download>
+                <span class="dl-label"><span class="arrow">&darr;</span> Windows</span>
+                <span class="dl-meta">Installer &middot; .exe &middot; 78 MB</span>
+            </a>
+            <a class="dl" href="https://github.com/swolekat/secret-releases/releases/download/downloads/Twitch.Tinder-1.4.0.AppImage" download>
+                <span class="dl-label"><span class="arrow">&darr;</span> Linux</span>
+                <span class="dl-meta">AppImage &middot; 104 MB</span>
+            </a>
+        </div>
+    </section>
+
+    <section class="card">
+        <div class="card-head">
+            <h2>VRC2VNyan</h2>
+            <span class="ver">v0.2.0</span>
+        </div>
+        <p>
+            I wanted to get more vnyan worlds. It turns out that there are a lot of unity packages out there for vrchat
+            but also in places like the unity asset store OR humble bundle. This app pulls in the unity package and
+            tries to massage it to being a vnyan world. There are bugs and issues, but I did get decent stuff out of it.
+        </p>
+        <div class="downloads">
+            <a class="dl" href="https://github.com/swolekat/secret-releases/releases/download/downloads/VRC2VNyan.Setup.0.2.0.exe" download>
+                <span class="dl-label"><span class="arrow">&darr;</span> Windows</span>
+                <span class="dl-meta">Installer &middot; .exe &middot; 272 MB</span>
+            </a>
+        </div>
+    </section>
+
+    <section class="card">
+        <div class="card-head">
+            <h2>VRMBones</h2>
+            <span class="ver">v0.2.0</span>
+        </div>
+        <p>
+            I've worked with Chrispy_Taters for models for a while but he had an issue where the ear bones would
+            sometimes just disappear. These earbones are important because I use LZ's ear and tail graphs for vnyan to
+            add "ear and tail tracking". I had an idea: "what if we could have an app that could transfer those over".
+            It morphed into being a lot more. I might add more to this project as I get feedback from my modellers.
+        </p>
+        <ul>
+            <li>
+                It can copy and paste ear, tail, and butt bones from one vrm to another
+            </li>
+            <li>
+                It can create new tail/ear bones on models that don't have them.
+            </li>
+            <li>
+                It can add butt bones and physics to models that don't have them.
+            </li>
+            <li>
+                It can add bones to skirts for more realistic movement.
+            </li>
+            <li>
+                It can add bones to hair for more realistic movement.
+            </li>
+        </ul>
+        <div class="downloads">
+            <a class="dl" href="https://github.com/swolekat/secret-releases/releases/download/downloads/VRMBones.Setup.0.2.0.exe" download>
+                <span class="dl-label"><span class="arrow">&darr;</span> Windows</span>
+                <span class="dl-meta">Installer &middot; .exe &middot; 79 MB</span>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        Unsigned builds &mdash; your OS will probably warn you. &middot;
+        <a href="https://swolekat.info">swolekat.info</a>
+    </footer>
+</main>
+</body>
+</html>
