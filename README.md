@@ -1,0 +1,2 @@
+# Secret Releases
+I'm not trying to rock the boat with anyone right now. I have been using AI coding tools to make a couple of tiny apps that are useful for me. I figure they might also be useful to others. So here they are. Please do with them what you will. 
