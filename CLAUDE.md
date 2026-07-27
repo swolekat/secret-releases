@@ -20,6 +20,16 @@ Why: this page is the single distribution point. Links to other repos break when
 those repos are renamed, made private, or have their releases retidied, and they
 expose repo names that aren't meant to be advertised from here.
 
+### This repo has to stay public
+
+Release assets inherit the repo's visibility. While this repo was private every
+download link on the page 404'd for visitors, even though the Pages site itself
+served fine. "Secret" here means *unlisted* — `noindex, nofollow` on the page,
+not linked from anywhere — not private. Don't flip it back.
+
+The tool repos (`VrmBoneTool`, `VnyanHandColliders`, …) stay private; that's the
+other reason artifacts get re-uploaded here rather than linked.
+
 ### Releases are just asset buckets — bump the patch version
 
 Release tags here (`v0.0.1`, `v0.0.2`, …) carry no meaning beyond "a place to
