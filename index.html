@@ -264,18 +264,18 @@
     <section class="card">
         <div class="card-head">
             <h2>Twitch Tinder</h2>
-            <span class="ver">v1.4.0</span>
+            <span class="ver">v1.4.1</span>
         </div>
         <p>
             Twitch discovery is not great. This app will take your following list and give you a tinder style feed of
             streamers that you can like (and hopefully follow) or not like, and it won't show you again.
         </p>
         <div class="downloads">
-            <a class="dl" href="https://github.com/swolekat/secret-releases/releases/download/v0.0.1/Twitch.Tinder.Setup.1.4.0.exe" download>
+            <a class="dl" href="https://github.com/swolekat/secret-releases/releases/download/v0.0.5/Twitch.Tinder.Setup.1.4.1.exe" download>
                 <span class="dl-label"><span class="arrow">&darr;</span> Windows</span>
                 <span class="dl-meta">Installer &middot; .exe &middot; 78 MB</span>
             </a>
-            <a class="dl" href="https://github.com/swolekat/secret-releases/releases/download/v0.0.1/Twitch.Tinder-1.4.0.AppImage" download>
+            <a class="dl" href="https://github.com/swolekat/secret-releases/releases/download/v0.0.5/Twitch.Tinder-1.4.1.AppImage" download>
                 <span class="dl-label"><span class="arrow">&darr;</span> Linux</span>
                 <span class="dl-meta">AppImage &middot; 104 MB</span>
             </a>
@@ -296,6 +296,39 @@
             <a class="dl" href="https://github.com/swolekat/secret-releases/releases/download/v0.0.1/VRC2VNyan.Setup.0.2.0.exe" download>
                 <span class="dl-label"><span class="arrow">&darr;</span> Windows</span>
                 <span class="dl-meta">Installer &middot; .exe &middot; 272 MB</span>
+            </a>
+        </div>
+    </section>
+
+    <section class="card">
+        <div class="card-head">
+            <h2>VMC Gender Changer</h2>
+            <span class="ver">v0.2.0</span>
+        </div>
+        <p>
+            I run full body tracking on one PC and VNyan on another, and I wanted a way to make the same mocap read
+            as more feminine without touching either setup. This is a little VMC proxy that sits in between the two,
+            rewrites the bone rotations on the way through, and forwards them on. Neither side knows it's there.
+        </p>
+        <ul>
+            <li>
+                Live Male/Female toggle in the window, or from a Stream Deck / any HTTP client.
+            </li>
+            <li>
+                Male mode is a raw passthrough. Female mode applies per-bone rotation offsets: thighs in, knees
+                facing each other, pelvic tilt, arms closer to the body, elbow carrying angle.
+            </li>
+            <li>
+                Seated offsets fade in as you sit down so the knees stay together instead of man-spreading.
+            </li>
+            <li>
+                Pose only. It can't change hip or shoulder width, that has to come from the model itself.
+            </li>
+        </ul>
+        <div class="downloads">
+            <a class="dl" href="https://github.com/swolekat/secret-releases/releases/download/v0.0.5/VMCGenderChanger.Setup.0.2.0.exe" download>
+                <span class="dl-label"><span class="arrow">&darr;</span> Windows</span>
+                <span class="dl-meta">Installer &middot; .exe &middot; 78 MB</span>
             </a>
         </div>
     </section>
