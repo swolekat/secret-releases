@@ -306,25 +306,8 @@
             <span class="ver">v0.2.0</span>
         </div>
         <p>
-            I run full body tracking on one PC and VNyan on another, and I wanted a way to make the same mocap read
-            as more feminine without touching either setup. This is a little VMC proxy that sits in between the two,
-            rewrites the bone rotations on the way through, and forwards them on. Neither side knows it's there.
+            I use full body tracking and I have a male skeleton. This can end up with the female models looking sort of weird. I wondered if there was a way to help sell the illusion a bit more and this is what I came up with. How it works is that it accepts vmc packets from vnyan, then either does a pass through for male models OR modifies bone rotations slightly for female models, then outputs vmc that my main pc can use. Probably pretty niche for my use case but I could see it being helpful if others are using software like xr animator.
         </p>
-        <ul>
-            <li>
-                Live Male/Female toggle in the window, or from a Stream Deck / any HTTP client.
-            </li>
-            <li>
-                Male mode is a raw passthrough. Female mode applies per-bone rotation offsets: thighs in, knees
-                facing each other, pelvic tilt, arms closer to the body, elbow carrying angle.
-            </li>
-            <li>
-                Seated offsets fade in as you sit down so the knees stay together instead of man-spreading.
-            </li>
-            <li>
-                Pose only. It can't change hip or shoulder width, that has to come from the model itself.
-            </li>
-        </ul>
         <div class="downloads">
             <a class="dl" href="https://github.com/swolekat/secret-releases/releases/download/v0.0.5/VMCGenderChanger.Setup.0.2.0.exe" download>
                 <span class="dl-label"><span class="arrow">&darr;</span> Windows</span>
